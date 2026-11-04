@@ -34,7 +34,7 @@ function StoryCard({ story, onSelect }: { story: Story; onSelect: (story: Story)
             alt={story.title}
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-[var(--color-bronze)]">
