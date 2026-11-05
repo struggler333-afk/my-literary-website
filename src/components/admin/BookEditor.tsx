@@ -226,4 +226,56 @@ export function BookEditor({ open, book, onClose, onSaved }: BookEditorProps) {
         {displayedCover ? (
           <div className="relative overflow-hidden rounded-xl border border-ink-200 dark:border-ink-700 bg-ink-100 dark:bg-ink-800">
             <img src={displayedCover} alt="غلاف الكتاب" className="h-44 w-full object-contain" />
-            <div className="absolute inset-x-0 bottom-0 flex justify-end bg-gradient-to-t from-black/7
+            <div className="absolute inset-x-0 bottom-0 flex justify-end bg-gradient-to-t from-black/70 to-transparent p-3 pt-8">
+              <button type="button" onClick={removeCover} disabled={busy} className="inline-flex items-center gap-2 rounded-lg bg-white/90 px-3 py-2 text-sm font-medium text-red-700 hover:bg-white disabled:opacity-50">
+                <Trash2 size={16} />
+                إزالة الصورة
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="flex h-32 items-center justify-center rounded-xl border border-dashed border-ink-200 dark:border-ink-700 bg-ink-50 dark:bg-ink-800/50 text-ink-400">
+            <div className="text-center">
+              <ImagePlus className="mx-auto mb-2" size={26} />
+              <p className="text-sm">لم يتم اختيار صورة الغلاف</p>
+            </div>
+          </div>
+        )}
+
+        <Input
+          label={t.bookEditor.downloadUrl}
+          value={form.download_url}
+          onChange={(event) => setForm({ ...form, download_url: event.target.value })}
+          placeholder="https://..."
+          disabled={busy}
+          dir="ltr"
+        />
+        <Input
+          label={t.bookEditor.buyUrl}
+          value={form.buy_url}
+          onChange={(event) => setForm({ ...form, buy_url: event.target.value })}
+          placeholder="https://..."
+          disabled={busy}
+          dir="ltr"
+        />
+        <label className="flex items-center gap-3 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={form.published}
+            onChange={(event) => setForm({ ...form, published: event.target.checked })}
+            className="w-5 h-5 rounded border-ink-300 text-amber-700 focus:ring-amber-500"
+            disabled={busy}
+          />
+          <span className="text-sm text-ink-700 dark:text-ink-200">{t.bookEditor.published}</span>
+        </label>
+
+        {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
+
+        <div className="flex justify-end gap-3 pt-2">
+          <Button variant="ghost" type="button" onClick={onClose} disabled={busy}>{t.bookEditor.cancel}</Button>
+          <Button type="submit" disabled={busy}>{busy ? t.bookEditor.saving : isEditing ? t.bookEditor.save : t.bookEditor.create}</Button>
+        </div>
+      </form>
+    </Modal>
+  );
+}

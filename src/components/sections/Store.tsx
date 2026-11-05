@@ -50,9 +50,9 @@ export function Store() {
             {books.map((book) => (
               <article key={book.id} className="group text-right">
                 <button type="button" onClick={() => setSelected(book)} className="block w-full text-right outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-bronze)]">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-[var(--color-surface)]">
+                  <div className="relative aspect-[3/4] overflow-hidden bg-[var(--color-surface)]">
                     {book.cover_image_url ? (
-                      <img src={book.cover_image_url} alt={book.title} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                      <img src={book.cover_image_url} alt={book.title} loading="lazy" decoding="async" className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]" />
                     ) : (
                       <div className="flex h-full items-center justify-center"><BookMarked className="text-[var(--color-bronze)]" size={48} strokeWidth={1} /></div>
                     )}
@@ -75,8 +75,8 @@ export function Store() {
         {selected && (
           <div className="space-y-6 text-right">
             <div className="flex gap-5" dir="rtl">
-              <div className="h-32 w-24 shrink-0 overflow-hidden bg-[var(--color-surface)]">
-                {selected.cover_image_url ? <img src={selected.cover_image_url} alt={selected.title} className="h-full w-full object-cover" /> : <div className="flex h-full items-center justify-center"><BookMarked className="text-[var(--color-bronze)]" size={28} /></div>}
+              <div className="relative aspect-[3/4] h-40 w-30 shrink-0 overflow-hidden bg-[var(--color-surface)]">
+                {selected.cover_image_url ? <img src={selected.cover_image_url} alt={selected.title} className="h-full w-full object-contain" /> : <div className="flex h-full items-center justify-center"><BookMarked className="text-[var(--color-bronze)]" size={28} /></div>}
               </div>
               <div className="flex-1">
                 {selected.author && <p className="mb-2 text-sm text-[var(--color-text-secondary)]">{t.store.by} {selected.author}</p>}

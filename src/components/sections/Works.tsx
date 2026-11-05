@@ -27,7 +27,7 @@ function StoryCard({ story, onSelect }: { story: Story; onSelect: (story: Story)
       }}
       className="group cursor-pointer flex flex-col w-[300px] sm:w-[340px] lg:w-[370px] bg-white dark:bg-[#181715] border-2 border-black/10 dark:border-white/10 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:border-[var(--color-bronze)] hover:bg-[#f6f1e7] dark:hover:bg-[#23211c] hover:shadow-2xl outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-bronze)] text-right flex-shrink-0"
     >
-      <div className="relative overflow-hidden aspect-[16/10] bg-[#eae5db] dark:bg-[#22201c] transition-colors duration-300 group-hover:bg-[#f0eae0] dark:group-hover:bg-[#2c2924]">
+      <div className="relative overflow-hidden aspect-[3/4] bg-[#eae5db] dark:bg-[#22201c] transition-colors duration-300 group-hover:bg-[#f0eae0] dark:group-hover:bg-[#2c2924]">
         {story.cover_image_url ? (
           <img
             src={story.cover_image_url}
